@@ -36,9 +36,3 @@ private:
 	Point x;
 	int r;
 };
-
-class Smiley :public Circle {
-public:
-	Smile()
-};
-

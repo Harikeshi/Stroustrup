@@ -37,7 +37,7 @@ public:
 	Vector& operator=(const Vector& v)
 	{
 		T* p = new T[v.size()];
-		for (int i = 0; i != v.size(); += i)
+		for (int i = 0; i != v.size(); ++i)
 		{
 			p[i] = v.elem[i];
 		}
