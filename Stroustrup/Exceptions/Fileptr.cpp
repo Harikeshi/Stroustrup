@@ -8,6 +8,4 @@ public:
 	{
 		if (p == nullptr) throw std::runtime_error{ "File_ptr: Can't open file. " };
 	}
-
-
 };

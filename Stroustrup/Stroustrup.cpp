@@ -36,12 +36,12 @@ void test() {
 
 
 #include "Exceptions/Fileptr.cpp"
-
+#include "Exceptions/FinalAction.cpp"
 int main()
 {
 
 	test();
-	File_ptr p("test.txt","r");
-
+	File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt","r");
+	test1();
 }
 
