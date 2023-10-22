@@ -37,11 +37,14 @@ void test() {
 
 #include "Exceptions/Fileptr.cpp"
 #include "Exceptions/FinalAction.cpp"
+#include "Exceptions/vector.cpp"
+
 int main()
 {
-
 	test();
 	File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt","r");
 	test1();
+	//vector<int> v(10,12);
+	cout << "end";
 }
 
