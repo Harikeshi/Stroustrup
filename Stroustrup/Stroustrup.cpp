@@ -43,58 +43,61 @@ void test() {
 #include <string>
 #include <iostream>
 #include <vector>
-int main()
+
+string ass(int (*f)(std::vector<string>), std::vector<string>v, int ans)
 {
+	return  f(v) == ans ? "true" : "false";
+}
 
-	//std::vector<int>v{ 5, 3, 2, 4, 6, 1 };
-	std::vector<int>v{ 1,1,2,2,3,3};
-	/*int n, b;
-	std::vector<int>v;
-	cin >> n >> b;
-	for (int i = 0; i < n; ++i) {
-		int temp;
-		cin >> temp;
-		v.push_back(temp);
-	}*/
+void test(std::vector<std::vector<string>>v, int (*f)(std::vector<string>), std::vector<int>ans) {
+	int i = 0;
+	for (auto x : v) {
+		cout << ass(f, x, ans[i]) << endl;
+		++i;
+	}
+}
 
-	int res = 0;
-	int maxres = 0;
+int f(std::vector<string> v)
+{
+	int last = atoi(v[0].substr(0, 2).c_str()) * 360 + atoi(v[0].substr(3, 2).c_str()) * 60 + atoi(v[0].substr(6, 2).c_str());
 
-	int b = 1;
-	for (int i = 0; i < v.size() - 1; ++i) {
-		int t = 1;
+	int count = 1;
+	cout << last << endl;
 
-		for (int j = i + 1; j < v.size(); ++j)
+	for (int i = 1; i < v.size(); ++i)
+	{
+
+		int curr = atoi(v[i].substr(0, 2).c_str()) * 360 + atoi(v[i].substr(3, 2).c_str()) * 60 + atoi(v[i].substr(6, 2).c_str());
+
+		cout << curr << endl;
+		if (curr <= last)
 		{
-			if (v[j] >= t&&v[j]<=b) {
-				t = v[j];
-				res++;
-			}
+			++count;
 		}
-		if (res > maxres) maxres = res;
-		res = 0;
+
+		last = curr;
+
 	}
 
-	cout << maxres << endl;
+	return count;
+}
 
 
+int main()
+{
+	std::vector<std::vector<string>> v
+	{
+		{ "00:00:00","00:01:11","02:15:59","23:59:58","23:59:59" },
+		{ "12:00:00","23:59:59","00:00:00" },
+		{"00:00:00","00:00:00","00:00:00","00:00:00"},
+		{"00:00:00"},
+		{ "00:01:11", "00:00:00","00:01:11","00:01:11", "00:00:00","00:01:11", "00:00:00"},
+		{"23:59:59","00:00:00"},
+		{"00:00:00","23:59:59"}
+	};
+	std::vector<int>a{ 1,2,4,1,5,2,1 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	test(v, f, a);
 
 	//test();
 	//File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt","r");
