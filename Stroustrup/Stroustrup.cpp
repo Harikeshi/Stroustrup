@@ -1,7 +1,4 @@
-// Stroustrup.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+﻿#include <iostream>
 //#include "complex.h"
 //#include "vector.h"
 #include "Tree/trees.cpp"
@@ -87,14 +84,42 @@ void ya(string s)
 	cout << res;
 }
 
+class X {
+private:
+	int m;
 
+public:
+	X(int i = 0) :m{ i } {}
+	int mf(int i) {
+		int old = m;
+		m = i;
+		return old;
+	}
+
+};
+
+int user(X var, X* ptr) {
+	int x = var.mf(7);
+	cout << x << endl;
+	int y = ptr->mf(9);
+	cout << y << endl;
+
+	return 0;
+}
 
 
 int main()
 {
-	test();
-	File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt", "r");
-	test1();
+
+	X x{ 1 };
+	X y{ 2 };
+
+	X z = x;
+	cout << z.mf(0) << endl;
+
+	//test();
+	//File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt", "r");
+	//test1();
 	//vector<int> v(10,12);
 
 }

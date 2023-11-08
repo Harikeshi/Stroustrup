@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Abstractions\Date.cpp" />
     <ClCompile Include="Exceptions\vector.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
     <ClCompile Include="Stroustrup.cpp" />

@@ -21,6 +21,12 @@
     <ClCompile Include="Hierarchy.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exceptions\vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Abstractions\Date.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="complex.h">
@@ -32,6 +38,5 @@
     <ClInclude Include="Container.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-	  
   </ItemGroup>
 </Project>
