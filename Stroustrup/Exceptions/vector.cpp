@@ -71,3 +71,7 @@ vector<T, A>::vector(size_type n, const T& val, const A& a)
 		throw; // Повторная генерация
 	}
 }
+
+
+
+

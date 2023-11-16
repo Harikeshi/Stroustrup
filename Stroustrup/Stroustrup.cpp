@@ -36,91 +36,70 @@ void test() {
 #include "Exceptions/FinalAction.cpp"
 #include "Exceptions/vector.cpp"
 
+
 #include <string>
-void ya(string s)
+#include <iostream>
+#include <vector>
+
+string ass(int (*f)(std::vector<string>), std::vector<string>v, int ans)
 {
-	// 2+2
-	// 11-22-33
-	// 2023
-
-	//string s;
-	//cin >> s;
-	double res = 0;
-	size_t i = 0;
-	string temp;
-
-	if (isdigit(s[0]))
-	{
-		while (i < s.size() && isdigit(s[i]))
-		{
-			temp += s[i];
-			i++;
-		}
-		res += stod(temp);
-		--i;
-	}
-
-	for (; i < s.size() - 1; ++i)
-	{
-		// 11-22-33
-		if (s[i] == '-' || s[i] == '+')
-		{
-			temp = "";
-			temp += s[i++];
-
-			while (i < s.size() && isdigit(s[i]))
-			{
-				temp += s[i];
-				++i;
-			}
-
-			res += stod(temp);
-
-			if (i < s.size() - 1)
-				--i;
-		}
-	}
-
-	cout << res;
+	return  f(v) == ans ? "true" : "false";
 }
 
-class X {
-private:
-	int m;
+void test(std::vector<std::vector<string>>v, int (*f)(std::vector<string>), std::vector<int>ans) {
+	int i = 0;
+	for (auto x : v) {
+		cout << ass(f, x, ans[i]) << endl;
+		++i;
+	}
+}
 
-public:
-	X(int i = 0) :m{ i } {}
-	int mf(int i) {
-		int old = m;
-		m = i;
-		return old;
+int f(std::vector<string> v)
+{
+	int last = atoi(v[0].substr(0, 2).c_str()) * 360 + atoi(v[0].substr(3, 2).c_str()) * 60 + atoi(v[0].substr(6, 2).c_str());
+
+	int count = 1;
+	cout << last << endl;
+
+	for (int i = 1; i < v.size(); ++i)
+	{
+
+		int curr = atoi(v[i].substr(0, 2).c_str()) * 360 + atoi(v[i].substr(3, 2).c_str()) * 60 + atoi(v[i].substr(6, 2).c_str());
+
+		cout << curr << endl;
+		if (curr <= last)
+		{
+			++count;
+		}
+
+		last = curr;
+
 	}
 
-};
-
-int user(X var, X* ptr) {
-	int x = var.mf(7);
-	cout << x << endl;
-	int y = ptr->mf(9);
-	cout << y << endl;
-
-	return 0;
+	return count;
 }
 
 
 int main()
 {
+	std::vector<std::vector<string>> v
+	{
+		{ "00:00:00","00:01:11","02:15:59","23:59:58","23:59:59" },
+		{ "12:00:00","23:59:59","00:00:00" },
+		{"00:00:00","00:00:00","00:00:00","00:00:00"},
+		{"00:00:00"},
+		{ "00:01:11", "00:00:00","00:01:11","00:01:11", "00:00:00","00:01:11", "00:00:00"},
+		{"23:59:59","00:00:00"},
+		{"00:00:00","23:59:59"}
+	};
+	std::vector<int>a{ 1,2,4,1,5,2,1 };
 
-	X x{ 1 };
-	X y{ 2 };
-
-	X z = x;
-	cout << z.mf(0) << endl;
+	test(v, f, a);
 
 	//test();
-	//File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt", "r");
+	//File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt","r");
 	//test1();
-	//vector<int> v(10,12);
-
+	////vector<int> v(10,12);
+	//cout << "end";
 }
 
