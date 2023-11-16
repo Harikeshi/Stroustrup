@@ -46,6 +46,19 @@ string ass(int (*f)(std::vector<string>), std::vector<string>v, int ans)
 	return  f(v) == ans ? "true" : "false";
 }
 
+
+std::vector<std::vector<string>> v
+{
+	{ "00:00:00","00:01:11","02:15:59","23:59:58","23:59:59" },
+	{ "12:00:00","23:59:59","00:00:00" },
+	{"00:00:00","00:00:00","00:00:00","00:00:00"},
+	{"00:00:00"},
+	{ "00:01:11", "00:00:00","00:01:11","00:01:11", "00:00:00","00:01:11", "00:00:00"},
+	{"23:59:59","00:00:00"},
+	{"00:00:00","23:59:59"}
+};
+std::vector<int>a{ 1,2,4,1,5,2,1 };
+
 void test(std::vector<std::vector<string>>v, int (*f)(std::vector<string>), std::vector<int>ans) {
 	int i = 0;
 	for (auto x : v) {
@@ -79,22 +92,59 @@ int f(std::vector<string> v)
 	return count;
 }
 
+//for C
+int C(std::vector<int> v, int b)
+{
+	int max = 0;
+	int res = 0;
+	// 5, 3, 2, 4, 6, 1
+	for (int i = 0; i < v.size(); ++i) {
+		int t = v[i];
+		for (int j = i; j < v.size(); ++j)
+		{
+			if (v[j] >= t && v[j] <= t + b) {
+				++res;
+				t = v[j];
+			}
+		}
+
+		if (res > max)max = res;
+		res = 0;
+	}
+	return max;
+}
+
+#include <string>
+void testC(int (*f)(std::vector<int>, int), std::vector<std::vector<int>> v, std::vector<int>ask, std::vector<int>ans) {
+
+	for (int i = 0; i < v.size(); ++i) {
+		cout << ((f(v[i], ask[i]) == ans[i]) ? "true" : "false") << " " + to_string(f(v[i], ask[i])) + " " + to_string(ans[i]) << std::endl;
+	}
+}
+
+std::vector<std::vector<int>> vc{
+	{5, 3, 2, 4, 6, 1},
+	{1, 1, 2, 2, 3, 3},
+	{5, 4, 3, 2, 1},
+	{5, 3, 2, 4, 6, 1},
+	{1, 1, 2, 2, 3, 3},
+	{0},
+	{0,1,0,1,0,1,0,1}
+};
+std::vector<int> askc{ 6,1,5,1,0,1, 1 };
+std::vector<int>ansc{ 3,6,1,2,2,1,5 };
+
+
+
 
 int main()
 {
-	std::vector<std::vector<string>> v
-	{
-		{ "00:00:00","00:01:11","02:15:59","23:59:58","23:59:59" },
-		{ "12:00:00","23:59:59","00:00:00" },
-		{"00:00:00","00:00:00","00:00:00","00:00:00"},
-		{"00:00:00"},
-		{ "00:01:11", "00:00:00","00:01:11","00:01:11", "00:00:00","00:01:11", "00:00:00"},
-		{"23:59:59","00:00:00"},
-		{"00:00:00","23:59:59"}
-	};
-	std::vector<int>a{ 1,2,4,1,5,2,1 };
 
-	test(v, f, a);
+	testC(C, vc, askc, ansc);
+
+
+
+	//test(v, f, a);
 
 	//test();
 	//File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt","r");
