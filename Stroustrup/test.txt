@@ -1,0 +1,28 @@
+/*std::vector<std::vector<int>> x
+	{
+		{ 5, 3, 2, 4, 6, 1 },
+		{1, 1 ,2, 2, 3, 3},
+		{5 ,4 ,3 ,2, 1,},
+		{5 ,3, 2 ,4, 6, 1},
+		{1 ,1, 2 ,2, 3, 3}
+	};
+	std::vector<int> ask{ 6,1,5,1,0 };
+	std::vector<int> answers{ 3,6,1,2,2 };
+
+	testc(C, x, ask, answers);*/
+
+	//cout << w.count;
+	
+	X x1{};
+
+	/*std::vector<int> v12{ 1,2,3,4,5 };
+	ftrac(v12);*/
+
+	//std::vector<int>a{ 1,2,4,1,5,2,1 };
+	//test(v, f, a);
+
+	//test();
+	//File_ptr p("C:\\Users\\sshch\\Source\\Repos\\Harikeshi\\Stroustrup\\Stroustrup\\test.txt","r");
+	//test1();
+	////vector<int> v(10,12);
+	//cout << "end";

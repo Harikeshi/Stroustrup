@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,10 @@
     <ClCompile Include="Exceptions\vector.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
     <ClCompile Include="Stroustrup.cpp" />
+    <ClCompile Include="Tree\Tree.cpp" />
+    <ClCompile Include="unit16\classX.cpp" />
+    <ClCompile Include="unit16\Date.cpp" />
+    <ClCompile Include="unit17\Tracer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="complex.h" />
