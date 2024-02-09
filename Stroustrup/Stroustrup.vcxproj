@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Exceptions\vector.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
+    <ClCompile Include="http.cpp" />
     <ClCompile Include="Stroustrup.cpp" />
     <ClCompile Include="Tree\Tree.cpp" />
     <ClCompile Include="unit16\classX.cpp" />

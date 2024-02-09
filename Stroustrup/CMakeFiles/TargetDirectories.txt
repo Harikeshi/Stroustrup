@@ -1,0 +1,2 @@
+C:/Users/sshch/source/repos/Harikeshi/Stroustrup/Stroustrup/CMakeFiles/ALL_BUILD.dir
+C:/Users/sshch/source/repos/Harikeshi/Stroustrup/Stroustrup/CMakeFiles/ZERO_CHECK.dir

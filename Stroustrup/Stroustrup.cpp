@@ -425,26 +425,148 @@ struct Z {
 	int operator[](int i) { return elem[i]; }
 };
 
-
 struct Cc {
 
 
 	void operator,(const Cc& c) { cout << "." << endl; }
 };
 
+class complex {
 
+	double re, im;
+
+public:
+	
+	constexpr complex(double re =0, double im=0) :re{ re }, im{ im } {
+		cout << "user constructor(" << re << ")" << endl;
+	}
+
+	constexpr complex operator"" i(double d)
+	{
+		return { 0,d };
+	}
+
+	complex(const complex& c) :re{ c.re }, im{ c.im } {
+		cout << "copy constructor(" << re << ")" << endl;
+	}
+	complex(complex&& c) noexcept :re{ c.re }, im{ c.im } {
+		c.re = 0; c.im = 0;
+		cout << "move constructor" << endl;
+	}
+	~complex() {
+		cout << "~" << endl;
+	}
+
+	constexpr double real() const { return re; }
+	constexpr double imag() const { return im; }
+
+	void real(double r) { re = r; }
+	void imag(double i) { im = i; }
+
+	inline complex& operator+=(complex& c) {
+		re += c.re;
+		im += c.im;
+		return *this;
+	}
+
+	complex& operator+=(double d) { 
+		re += d;
+
+		return *this; 
+	}
+
+
+	complex operator*(complex c) {
+		cout << "(" << re << ").operator*(" << c.re << ")="; re *= c.re; cout << re << endl;
+		return *this;
+	}
+
+
+
+
+	complex& operator=(const complex& c) {
+		cout << "(" << re << ") copy =" << "(" << c.re << ")" << endl;
+		re = c.re; im = c.im;
+		return *this;
+	}
+	complex& operator=(complex&& c)noexcept {
+		cout << "(" << re << ") move =" << "(" << c.re << ")" << endl;
+		re = c.re; c.re = 0; im = c.im; c.im = 0;
+		return *this;
+	}
+};
+complex operator+(complex a, complex c)
+{	
+	return a += c;
+}
+complex operator+(complex a, double d)
+{
+	return { a.real() + d, a.imag() };
+}
+complex operator+(double d, complex a)
+{
+	return { a.real() + d, a.imag() };
+}
+
+
+
+void cf() {
+
+	complex a = complex{ 1, 3.1 };
+	//user constructor(1)
+
+	complex b{ 1.2, 2 };
+	//user constructor(1.2)
+
+	complex c{ b };
+	//copy constructor(1.2)
+
+	a = b + c;
+	//copy constructor(1.2)
+	//(1.2).operator+(1.2) = 2.4
+	//copy constructor(2.4)
+	//(1) move = (2.4)
+
+	b = b + (c * a);
+	//copy constructor(1)
+	//(1.2).operator*(1) = 1.2
+	//copy constructor(1.2)
+	//(2.4).operator+(1.2) = 3.6
+	//copy constructor(3.6)
+	//(3.6) move = (3.6)
+
+	c = a * b + complex(1, 2);
+	//copy constructor(3.6)
+	//(1).operator*(3.6) = 3.6
+	//copy constructor(3.6)
+	//user constructor(1)
+	//(3.6).operator+(1) = 4.6
+	//copy constructor(4.6)
+	//(1.2) move = (4.6)
+}
+void сg(complex a, complex b)
+{
+	a = { 1, 2 };		// OK: правая часть присваивания
+	//a += {1, 2};		// OK: правая часть присваивания
+	//b = a + {1, 2};		// синтаксическая ошибка
+	b = a + complex{ 1, 2 }; 	// OK
+	//сg(a, { 1, 2 });		// OK: аргумент функции считается инициализатором
+	//{a, b} = { b, a };		// синтаксическая ошибка
+}
 
 int main()
 {
 
-	Cc a, b;
+	//cf();
 
-	a, b;
+	complex x = { 4,10e2 };
 
-	Z z;
-	cout << z.largest;
+	complex y{ x };
+	
 
-	cout << alignof(Z);
+
+
+
 
 
 }
