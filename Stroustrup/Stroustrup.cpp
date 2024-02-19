@@ -431,85 +431,9 @@ struct Cc {
 	void operator,(const Cc& c) { cout << "." << endl; }
 };
 
-class complex {
 
-	double re, im;
-
-public:
-	
-	constexpr complex(double re =0, double im=0) :re{ re }, im{ im } {
-		cout << "user constructor(" << re << ")" << endl;
-	}
-
-	constexpr complex operator"" i(double d)
-	{
-		return { 0,d };
-	}
-
-	complex(const complex& c) :re{ c.re }, im{ c.im } {
-		cout << "copy constructor(" << re << ")" << endl;
-	}
-	complex(complex&& c) noexcept :re{ c.re }, im{ c.im } {
-		c.re = 0; c.im = 0;
-		cout << "move constructor" << endl;
-	}
-	~complex() {
-		cout << "~" << endl;
-	}
-
-	constexpr double real() const { return re; }
-	constexpr double imag() const { return im; }
-
-	void real(double r) { re = r; }
-	void imag(double i) { im = i; }
-
-	inline complex& operator+=(complex& c) {
-		re += c.re;
-		im += c.im;
-		return *this;
-	}
-
-	complex& operator+=(double d) { 
-		re += d;
-
-		return *this; 
-	}
-
-
-	complex operator*(complex c) {
-		cout << "(" << re << ").operator*(" << c.re << ")="; re *= c.re; cout << re << endl;
-		return *this;
-	}
-
-
-
-
-	complex& operator=(const complex& c) {
-		cout << "(" << re << ") copy =" << "(" << c.re << ")" << endl;
-		re = c.re; im = c.im;
-		return *this;
-	}
-	complex& operator=(complex&& c)noexcept {
-		cout << "(" << re << ") move =" << "(" << c.re << ")" << endl;
-		re = c.re; c.re = 0; im = c.im; c.im = 0;
-		return *this;
-	}
-};
-complex operator+(complex a, complex c)
-{	
-	return a += c;
-}
-complex operator+(complex a, double d)
-{
-	return { a.real() + d, a.imag() };
-}
-complex operator+(double d, complex a)
-{
-	return { a.real() + d, a.imag() };
-}
-
-
-
+#include "complex.h"
+#include "Ptr.cpp"
 void cf() {
 
 	complex a = complex{ 1, 3.1 };
@@ -554,15 +478,48 @@ void сg(complex a, complex b)
 	//{a, b} = { b, a };		// синтаксическая ошибка
 }
 
+/*Библиотека*/
+class Foo
+{
+public:
+	Foo(int j) { i = new int[j]; cout << "constructor Foo" << endl; }
+	virtual ~Foo() { /*delete i;*/ cout << "~Foo" << endl; }
+private:
+	int* i;
+};
+
+class Bar : public Foo
+{
+public:
+	Bar(int j) :Foo{ j } { i = new char[j]; cout << "constructor Bar" << endl; }
+	~Bar() { delete i; cout << "~Bar" << endl; }
+private:
+	char* i;
+};
+
+
+//#include "Friends.cpp"
+
 int main()
 {
 
+	Ptr<char> p;
+	p.operator->();
+	auto c = complex{ 1 };
+
+	Add a(c);
+
+
+	a(c);
+
+	
+
 	//cf();
 
-	complex x = { 4,10e2 };
+	//complex x = { 4,10e2 };
 
-	complex y{ x };
-	
+	//complex y{ x };
+	//
 
 
 

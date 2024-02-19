@@ -42,3 +42,12 @@ bool operator!=(complex a, complex b) { return !(a == b); }
 
 
 void complex::print() {}
+
+class Add {
+	complex val;
+public:
+	Add(complex c) :val{ c } {}
+	Add(double r, double i) :val{ r,i } {}
+
+	void operator()(complex& c) const { c += val; }
+};
