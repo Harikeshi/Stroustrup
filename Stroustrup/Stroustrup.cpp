@@ -497,18 +497,23 @@ private:
 	char* i;
 };
 
-
-//#include "Friends.cpp"
+#include "MWindow.cpp"
 
 int main()
 {
+
+	
+	Clock cl;
+
+	cl.draw();
+
 
 	Ptr<char> p;
 	p.operator->();
 	auto c = complex{ 1 };
 
 	Add a(c);
-
+	cout << "OK";
 
 	a(c);
 

@@ -133,7 +133,10 @@
     <ClCompile Include="Friends.cpp" />
     <ClCompile Include="Hierarchy.cpp" />
     <ClCompile Include="http.cpp" />
+    <ClCompile Include="MWindow.cpp" />
     <ClCompile Include="Ptr.cpp" />
+    <ClCompile Include="sinterface.cpp" />
+    <ClCompile Include="StdInterface.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Stroustrup.cpp" />
     <ClCompile Include="Tree\Tree.cpp" />

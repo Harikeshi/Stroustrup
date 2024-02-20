@@ -51,6 +51,15 @@
     <ClCompile Include="Friends.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="sinterface.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MWindow.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="complex.h">
